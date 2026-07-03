@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+
+@source '../../app/**/*.php';
+@source '../../resources/**/*.blade.php';
+@source '../../resources/**/*.js';
+@source '../../vendor/filament/**/*.blade.php';
+
+@theme {
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.section-shell {
+    position: relative;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-orange-gradient {
+    background: linear-gradient(90deg, #fb923c, #f97316, #facc15);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-kicker {
+    font-size: .75rem;
+    font-weight: 900;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #22d3ee;
+}
+
+.section-title {
+    margin-top: .75rem;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: .98;
+    letter-spacing: 0;
+}
+
+.metric {
+    border: 1px solid rgb(255 255 255 / .1);
+    border-radius: .75rem;
+    background: rgb(255 255 255 / .05);
+    padding: 1rem;
+}
+
+.metric strong {
+    display: block;
+    font-size: 1.875rem;
+    line-height: 1;
+    color: #fff;
+}
+
+.metric span {
+    margin-top: .5rem;
+    display: block;
+    font-size: .8rem;
+    color: #94a3b8;
+}
+
+.service-card,
+.impact-card,
+.blog-card {
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / .1);
+    border-radius: 1rem;
+    background: rgb(255 255 255 / .05);
+    box-shadow: 0 24px 80px rgb(0 0 0 / .2);
+}
+
+.service-card,
+.impact-card {
+    padding: 1.5rem;
+}
+
+.service-card {
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(34 211 238 / .45);
+    background: rgb(34 211 238 / .08);
+}
+
+.impact-card h3 {
+    margin-top: 1.25rem;
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+.impact-card p {
+    margin-top: .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.blog-card {
+    background: #0f172a;
+}
+
+.social-link {
+    display: grid;
+    height: 3rem;
+    width: 3rem;
+    place-items: center;
+    border-radius: .75rem;
+    background: rgb(255 255 255 / .06);
+}
+
+.social-link img {
+    height: 2rem;
+    width: 2rem;
+    object-fit: contain;
+}
+
+#chat-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #22d3ee transparent;
+}
