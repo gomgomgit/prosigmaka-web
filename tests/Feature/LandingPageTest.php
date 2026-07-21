@@ -70,7 +70,10 @@ class LandingPageTest extends TestCase
             'published_at' => now(),
         ]);
 
-        $this->get(route('blog.show', $published))->assertOk();
+        $this->get(route('blog.show', $published))
+            ->assertOk()
+            ->assertDontSee('id="preloader"', false)
+            ->assertDontSee('id="main-content" class="opacity-0', false);
         $this->get(route('blog.show', $draft))->assertNotFound();
     }
 }
