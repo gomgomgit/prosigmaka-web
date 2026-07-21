@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\LandingSection;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +22,15 @@ class DatabaseSeeder extends Seeder
             ['key' => $section['key']],
             $section + ['is_active' => true],
         ));
+
+        User::query()->firstOrCreate(
+            ['email' => 'admin@prosigmaka.com'],
+            [
+                'name' => 'Admin',
+                'password' => 'psmadmin',
+                'email_verified_at' => now(),
+            ]
+        );
 
         Post::query()->firstOrCreate(
             ['slug' => 'membangun-transformasi-digital-yang-berkelanjutan'],
