@@ -1,3 +1,6 @@
 [mcp_servers.laravel-boost]
 command = "wsl.exe"
 args = ["/usr/bin/php8.5", "/home/lenovo/projects/prosigmaka/proweb/artisan", "boost:mcp"]
+
+[mcp_servers.laravel-boost.tools.search-docs]
+approval_mode = "approve"

@@ -1,200 +1,41 @@
-<footer id="footer" class="relative overflow-hidden bg-gradient-to-br from-gray-950 via-blue-950/50 to-purple-950/50">
-            
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <!-- Main Footer Content -->
-                <div class="grid lg:grid-cols-12 md:grid-cols-2 gap-8 lg:gap-12 py-16">
-                    <!-- Company Info - Takes more space -->
-                    <div class="lg:col-span-5 md:col-span-2">
-                        <div class="flex items-center space-x-3 mb-6">
-                            <img src="{{ asset('assets/prosigmaka/logo-prosigmaka.png') }}" alt="Prosigmaka Logo" class="h-12">
-                        </div>
-                        <p class="text-gray-400 leading-relaxed mb-8 max-w-md">
-                            Professional IT consulting company providing comprehensive technology solutions, expert consulting services, and head hunting services to help businesses optimize their digital infrastructure since 2019.
-                        </p>
-                        
-                        <!-- Social Media Links -->
-                        <div class="mb-6">
-                            <h5 class="text-white font-semibold mb-4">Follow Us</h5>
-                            <div class="flex space-x-4">
-                                <a href="https://www.facebook.com/prosigmaka/" class="group relative w-12 h-12 bg-gray-800/50 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-700 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 social-media-link">
-                                    <img class="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
-                                         src="{{ asset('assets/prosigmaka/social-media/facebook.png') }}" alt="Facebook">
-                                </a>
-                                <a href="https://www.instagram.com/prosigmaka/?hl=id" class="group relative w-12 h-12 bg-gray-800/50 hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 social-media-link">
-                                    <img class="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
-                                         src="{{ asset('assets/prosigmaka/social-media/instagram.png') }}" alt="Instagram">
-                                </a>
-                                <a href="https://www.linkedin.com/company/prosigmaka/" class="group relative w-12 h-12 bg-gray-800/50 hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 social-media-link">
-                                    <img class="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
-                                         src="{{ asset('assets/prosigmaka/social-media/linkedin.png') }}" alt="LinkedIn">
-                                </a>
-                                <a href="https://vt.tiktok.com/ZSdcgyo6b/" class="group relative w-12 h-12 bg-gray-800/50 hover:bg-gradient-to-br hover:from-black hover:to-gray-700 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 social-media-link">
-                                    <img class="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
-                                         src="{{ asset('assets/prosigmaka/social-media/tik-tok.png') }}" alt="TikTok">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Services -->
-                    <div class="lg:col-span-2 md:col-span-1">
-                        <h4 class="text-xl font-bold text-white mb-6 flex items-center">
-                            <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mr-3"></span>
-                            Services
-                        </h4>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="#services" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Professional Services
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#services" class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Head Hunting
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#services" class="text-gray-400 hover:text-cyan-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Corporate Training
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#services" class="text-gray-400 hover:text-green-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    AI Solutions
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#services" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Learning Platform
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Company -->
-                    <div class="lg:col-span-2 md:col-span-1">
-                        <h4 class="text-xl font-bold text-white mb-6 flex items-center">
-                            <span class="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full mr-3"></span>
-                            Company
-                        </h4>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="#home" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#clients" class="text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Our Clients
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#case-study" class="text-gray-400 hover:text-cyan-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    Impact & Testimonials
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#ai-agent" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300 flex items-center group text-sm">
-                                    <svg class="w-3 h-3 mr-2 text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    AI Agents
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Contact Info -->
-                    <div class="lg:col-span-3 md:col-span-2">
-                        <h4 class="text-xl font-bold text-white mb-6 flex items-center">
-                            <span class="w-2 h-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mr-3"></span>
-                            Contact Info
-                        </h4>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3 group">
-                                <div class="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center group-hover:from-blue-500/40 group-hover:to-cyan-500/40 transition-all duration-300 mt-1 shrink-0">
-                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500 mb-1">Address</p>
-                                    <p class="text-gray-300 text-sm">Trio Building, Jl. Mampang Prpt. Raya No.17 Lt.3, Mampang Prpt., Kec. Mampang Prpt., Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12790</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start space-x-3 group">
-                                <div class="w-8 h-8 bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-lg flex items-center justify-center group-hover:from-green-500/40 group-hover:to-teal-500/40 transition-all duration-300 mt-1">
-                                    <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500 mb-1">Email</p>
-                                    <p class="text-gray-300 text-sm">info@prosigmaka.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start space-x-3 group">
-                                <div class="w-8 h-8 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center group-hover:from-purple-500/40 group-hover:to-pink-500/40 transition-all duration-300 mt-1">
-                                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500 mb-1">Business Hours</p>
-                                    <p class="text-gray-300 text-sm">Mon - Fri: 9:00 - 18:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bottom Bar -->
-                <div class="border-t border-gray-800/50 py-8">
-                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div class="flex items-center">
-                            <p class="text-gray-400 text-sm">
-                                © 2025 Prosigmaka. All rights reserved.
-                            </p>
-                        </div>
-                        
-                        <!-- Back to Top Button -->
-                        <button onclick="scrollToSection('home')" class="group flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-gray-800/50 to-gray-700/50 hover:from-blue-500/20 hover:to-purple-500/20 border border-gray-700 hover:border-blue-500/50 rounded-lg transition-all duration-300 hover:scale-105">
-                            <span class="text-sm text-gray-400 group-hover:text-white transition-colors duration-300">Back to Top</span>
-                            <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-300 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+<footer class="site-footer">
+    <div class="page-container">
+        <div class="footer-cta reveal">
+            <p class="section-kicker">Your next advantage</p>
+            <h2>Ready to turn ambition<br>into <span class="text-gradient">real capability?</span></h2>
+            <a class="button button-primary" href="https://wa.me/6281292787801?text=Hello%20Prosigmaka%2C%20let%27s%20discuss%20our%20needs." target="_blank" rel="noreferrer">Start a conversation</a>
+        </div>
+
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="{{ asset('assets/prosigmaka/logo-prosigmaka-white.png') }}" alt="Prosigmaka" class="brand-logo brand-logo-dark">
+                <img src="{{ asset('assets/prosigmaka/logo-prosigmaka.png') }}" alt="" class="brand-logo brand-logo-light" aria-hidden="true">
+                <p>AI-ready digital solutions, tech talent, and enterprise transformation partner.</p>
+                <a href="mailto:info@prosigmaka.com">info@prosigmaka.com</a>
             </div>
-        </footer>
+            <div class="footer-links">
+                <div><strong>Explore</strong><a href="#services">Solutions</a><a href="#case-study">Impact stories</a><a href="#clients">Clients</a><a href="#blog">Insights</a></div>
+                <div>
+                    <strong>Connect</strong>
+                    <nav class="footer-socials" aria-label="ProSigmaka social media">
+                        <a href="https://www.facebook.com/prosigmaka/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-facebook" aria-label="Follow ProSigmaka on Facebook" title="Facebook">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/prosigmaka/?hl=id" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-instagram" aria-label="Follow ProSigmaka on Instagram" title="Instagram">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/prosigmaka/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-linkedin" aria-label="Follow ProSigmaka on LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+                        </a>
+                        <a href="https://vt.tiktok.com/ZSdcgyo6b/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-tiktok" aria-label="Follow ProSigmaka on TikTok" title="TikTok">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/></svg>
+                        </a>
+                    </nav>
+                </div>
+                <div><strong>Visit</strong><p>Trio Building, 3rd Floor<br>Jl. Mampang Prapatan Raya No. 17<br>Jakarta Selatan 12790</p></div>
+            </div>
+        </div>
+
+        <div class="footer-bottom"><span>© 2025 PT Pro Sigmaka Mandiri. All rights reserved.</span><a href="#home">Back to top</a></div>
+    </div>
+</footer>

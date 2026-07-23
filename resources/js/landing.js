@@ -1,178 +1,247 @@
-const API_CONFIG = {
-    inferenceEndpoint: 'https://nea.alinnea.id/api/v1/projects/3e2ea441-ec9a-4b6c-a4fd-c55b1f54e638/inference',
-    filteredKnowledgeSourceIds: '1782802783866',
+const CHAT_API = {
+    endpoint: 'https://nea.alinnea.id/api/v1/projects/3e2ea441-ec9a-4b6c-a4fd-c55b1f54e638/inference',
+    knowledgeSourceIds: '1782802783866',
     timeout: 30000,
-    maxRetries: 3,
-    retryDelay: 1000,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    initVanta();
-    initTypingHeadline();
-    initChat();
+    initializeTheme();
+    initializeNavigation();
+    initializeReveals();
+    initializeImpactCarousel();
+    initializeChat();
 });
 
-function initVanta() {
-    const target = document.getElementById('vanta-bg');
+function initializeTheme() {
+    const buttons = document.querySelectorAll('.theme-toggle-btn');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const getStoredTheme = () => {
+        const storedTheme = localStorage.getItem('prosigmaka-theme');
 
-    if (!target) return;
-
-    const boot = () => {
-        if (!window.VANTA?.NET || !window.THREE) return;
-
-        window.VANTA.NET({
-            el: target,
-            THREE: window.THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200,
-            minWidth: 200,
-            scale: 1,
-            scaleMobile: 1,
-            color: 0x22d3ee,
-            backgroundColor: 0x111827,
-            points: 10,
-            maxDistance: 22,
-            spacing: 18,
-        });
+        return ['light', 'dark'].includes(storedTheme) ? storedTheme : null;
     };
 
-    window.setTimeout(boot, 300);
-}
-
-function initTypingHeadline() {
-    const element = document.querySelector('[data-typing-words]');
-    if (!element) return;
-
-    const words = element.dataset.typingWords.split(',').map((word) => word.trim()).filter(Boolean);
-    if (words.length < 2) return;
-
-    let index = 0;
-    window.setInterval(() => {
-        index = (index + 1) % words.length;
-        element.textContent = words[index];
-    }, 2400);
-}
-
-function initChat() {
-    const input = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
-    const typingIndicator = document.getElementById('typing-indicator');
-    const messages = document.getElementById('chat-messages');
-
-    if (!input || !sendButton || !typingIndicator || !messages) return;
-
-    addMessage(messages, 'ai', 'Halo! Saya adalah AI Assistant dari ProSigmaka. Saya siap membantu Anda dengan informasi tentang layanan kami.');
-
-    const sendMessage = async () => {
-        const message = input.value.trim();
-        if (!message || sendButton.disabled) return;
-
-        addMessage(messages, 'user', message);
-        input.value = '';
-        setChatBusy(input, sendButton, typingIndicator, true);
-
-        try {
-            const response = await callChatApi(message);
-            const aiMessage = response?.result?.ai_message || getFallbackResponse();
-            addMessage(messages, 'ai', stripChunkReferences(aiMessage));
-        } catch (error) {
-            addMessage(messages, 'error', getErrorMessage(error));
-            window.setTimeout(() => addMessage(messages, 'ai', getFallbackResponse()), 700);
-        } finally {
-            setChatBusy(input, sendButton, typingIndicator, false);
+    const applyTheme = (theme, persist = false) => {
+        const normalizedTheme = theme === 'light' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = normalizedTheme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', normalizedTheme === 'light' ? '#f5f7fa' : '#06080d');
+        if (persist) {
+            localStorage.setItem('prosigmaka-theme', normalizedTheme);
         }
+        buttons.forEach((button) => button.setAttribute('aria-pressed', normalizedTheme === 'light' ? 'true' : 'false'));
     };
 
-    sendButton.addEventListener('click', sendMessage);
-    input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            sendMessage();
+    applyTheme(document.documentElement.dataset.theme);
+    buttons.forEach((button) => button.addEventListener('click', () => {
+        applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light', true);
+    }));
+    systemTheme.addEventListener('change', (event) => {
+        if (getStoredTheme() === null) {
+            applyTheme(event.matches ? 'dark' : 'light');
         }
     });
 }
 
-function addMessage(container, type, text) {
+function initializeNavigation() {
+    const header = document.querySelector('[data-site-header]');
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const sections = [...document.querySelectorAll('[data-section]')];
+
+    const closeMenu = () => {
+        if (!menu || !menuButton) return;
+        menu.hidden = true;
+        menuButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+    };
+
+    menuButton?.addEventListener('click', () => {
+        const isOpening = menu?.hidden ?? false;
+        if (menu) menu.hidden = !isOpening;
+        menuButton.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
+        document.body.classList.toggle('menu-open', isOpening);
+    });
+
+    menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+    });
+
+    const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    if (!sections.length) return;
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        const visibleEntry = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+        if (!visibleEntry) return;
+        const activeId = visibleEntry.target.id;
+        document.querySelector('[data-floating-assistant]')?.classList.toggle('is-hidden', activeId === 'ai-agent');
+        document.querySelectorAll('[data-nav-link], [data-section-dot]').forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('href') === `#${activeId}` || link.dataset.sectionDot === activeId);
+        });
+    }, { rootMargin: '-30% 0px -55%', threshold: [0, 0.2, 0.5] });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+}
+
+function initializeReveals() {
+    const elements = document.querySelectorAll('.reveal');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        elements.forEach((element) => element.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const delay = Number(entry.target.dataset.delay || 0);
+            window.setTimeout(() => entry.target.classList.add('is-visible'), delay);
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.12 });
+
+    elements.forEach((element) => observer.observe(element));
+}
+
+function initializeImpactCarousel() {
+    const carousel = document.querySelector('[data-impact-carousel]');
+    const track = carousel?.querySelector('[data-impact-track]');
+    const slides = [...(track?.children || [])];
+    const progress = carousel?.querySelector('[data-carousel-progress]');
+    let currentIndex = 0;
+    let autoplayId;
+    let touchStart = 0;
+
+    if (!carousel || !track || slides.length < 2) return;
+
+    const showSlide = (index) => {
+        currentIndex = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        if (progress) progress.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
+    };
+
+    const stopAutoplay = () => window.clearInterval(autoplayId);
+    const startAutoplay = () => {
+        stopAutoplay();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            autoplayId = window.setInterval(() => showSlide(currentIndex + 1), 7000);
+        }
+    };
+
+    carousel.querySelector('[data-carousel-previous]')?.addEventListener('click', () => {
+        showSlide(currentIndex - 1);
+        startAutoplay();
+    });
+    carousel.querySelector('[data-carousel-next]')?.addEventListener('click', () => {
+        showSlide(currentIndex + 1);
+        startAutoplay();
+    });
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('touchstart', (event) => {
+        touchStart = event.changedTouches[0].clientX;
+        stopAutoplay();
+    }, { passive: true });
+    carousel.addEventListener('touchend', (event) => {
+        const distance = event.changedTouches[0].clientX - touchStart;
+        if (Math.abs(distance) > 45) showSlide(currentIndex + (distance < 0 ? 1 : -1));
+        startAutoplay();
+    }, { passive: true });
+
+    showSlide(0);
+    startAutoplay();
+}
+
+function initializeChat() {
+    const form = document.querySelector('[data-chat-form]');
+    const input = document.getElementById('chat-input');
+    const button = document.getElementById('send-button');
+    const messages = document.getElementById('chat-messages');
+    const typingIndicator = document.getElementById('typing-indicator');
+
+    if (!form || !input || !button || !messages || !typingIndicator) return;
+
+    const submitMessage = async (message) => {
+        const normalizedMessage = message.trim();
+        if (!normalizedMessage || button.disabled) return;
+
+        messages.querySelectorAll('.chat-preview-user, .chat-preview-ai').forEach((preview) => preview.remove());
+        appendChatMessage(messages, 'user', normalizedMessage);
+        input.value = '';
+        setChatBusy(input, button, typingIndicator, true);
+
+        try {
+            const response = await requestChatResponse(normalizedMessage);
+            appendChatMessage(messages, 'ai', cleanChatResponse(response?.result?.ai_message) || 'Let’s continue on WhatsApp so our team can help with the specifics.');
+        } catch (error) {
+            const errorMessage = error.name === 'AbortError'
+                ? 'The connection is taking longer than expected. Please try again or contact our team on WhatsApp.'
+                : 'Sorry, the AI service is currently unavailable. Our team is still ready to help on WhatsApp.';
+            appendChatMessage(messages, 'ai', errorMessage);
+        } finally {
+            setChatBusy(input, button, typingIndicator, false);
+        }
+    };
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        submitMessage(input.value);
+    });
+
+    document.querySelectorAll('[data-quick-prompt]').forEach((prompt) => prompt.addEventListener('click', () => {
+        submitMessage(prompt.dataset.quickPrompt || '');
+    }));
+}
+
+function appendChatMessage(container, type, message) {
     const row = document.createElement('div');
     const bubble = document.createElement('div');
+    row.className = `chat-row chat-row-${type}`;
+    bubble.className = 'chat-bubble';
+    bubble.textContent = message;
 
-    row.className = type === 'user' ? 'flex justify-end' : 'flex justify-start';
-    bubble.className = type === 'user'
-        ? 'max-w-[82%] rounded-2xl rounded-br-sm bg-cyan-400 px-4 py-3 text-sm font-semibold leading-6 text-slate-950'
-        : type === 'error'
-            ? 'max-w-[82%] rounded-2xl rounded-bl-sm border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200'
-            : 'max-w-[82%] rounded-2xl rounded-bl-sm border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm leading-6 text-slate-100';
-
-    bubble.textContent = text;
     row.appendChild(bubble);
     container.appendChild(row);
-    container.scrollTop = container.scrollHeight;
+    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
 }
 
 function setChatBusy(input, button, indicator, isBusy) {
     input.disabled = isBusy;
     button.disabled = isBusy;
-    indicator.classList.toggle('hidden', !isBusy);
-    input.placeholder = isBusy ? 'Menunggu respons...' : 'Mulai chat dengan AI...';
-
-    if (!isBusy) input.focus();
+    indicator.hidden = !isBusy;
+    input.placeholder = isBusy ? 'NEA is thinking...' : 'Ask NEA about your business challenge...';
 }
 
-async function callChatApi(message, retryCount = 0) {
+async function requestChatResponse(message) {
     const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), API_CONFIG.timeout);
+    const timeoutId = window.setTimeout(() => controller.abort(), CHAT_API.timeout);
+    const query = new URLSearchParams({
+        human_message: message,
+        filtered_knowledge_source_ids: CHAT_API.knowledgeSourceIds,
+    });
 
     try {
-        const params = new URLSearchParams({
-            human_message: message,
-            filtered_knowledge_source_ids: API_CONFIG.filteredKnowledgeSourceIds,
-        });
-
-        const response = await fetch(`${API_CONFIG.inferenceEndpoint}?${params.toString()}`, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-            },
+        const response = await fetch(`${CHAT_API.endpoint}?${query.toString()}`, {
+            headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
             signal: controller.signal,
         });
 
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } finally {
         window.clearTimeout(timeoutId);
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        return response.json();
-    } catch (error) {
-        window.clearTimeout(timeoutId);
-
-        if (retryCount < API_CONFIG.maxRetries && isRetryableError(error)) {
-            await new Promise((resolve) => window.setTimeout(resolve, API_CONFIG.retryDelay));
-            return callChatApi(message, retryCount + 1);
-        }
-
-        throw error;
     }
 }
 
-function isRetryableError(error) {
-    return ['AbortError', 'HTTP 500', 'HTTP 502', 'HTTP 503', 'HTTP 504'].some((marker) => error.name === marker || error.message.includes(marker));
-}
-
-function getErrorMessage(error) {
-    if (error.name === 'AbortError') return 'Koneksi timeout. Silakan coba lagi.';
-    if (error.message.includes('HTTP 429')) return 'Terlalu banyak permintaan. Silakan tunggu sebentar.';
-    if (error.message.includes('HTTP 401') || error.message.includes('HTTP 403')) return 'Akses ke layanan AI ditolak. Silakan coba lagi nanti.';
-    return 'Maaf, terjadi kesalahan saat menghubungi layanan AI.';
-}
-
-function getFallbackResponse() {
-    return 'Maaf, saya sedang mengalami gangguan teknis. Silakan coba lagi nanti atau hubungi tim kami melalui WhatsApp.';
-}
-
-function stripChunkReferences(text) {
-    return String(text || '').replace(/\[\d+\]\(#CHUNK-[a-f0-9-]+\)/gi, '').trim();
+function cleanChatResponse(message) {
+    return String(message || '')
+        .replace(/\[\d+\]\(#CHUNK-[a-f0-9-]+\)/gi, '')
+        .replace(/[*_`#>]/g, '')
+        .trim();
 }

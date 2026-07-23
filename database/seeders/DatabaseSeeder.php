@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             ['key' => 'clients', 'label' => 'Clients', 'sort_order' => 20],
             ['key' => 'services', 'label' => 'Services', 'sort_order' => 30],
             ['key' => 'case-study', 'label' => 'Case Study & Testimonials', 'sort_order' => 40],
-            ['key' => 'ai-agent', 'label' => 'AI Assistant', 'sort_order' => 50],
+            ['key' => 'ai-agent', 'label' => 'NEA AI', 'sort_order' => 50],
             ['key' => 'blog', 'label' => 'Blog', 'sort_order' => 60],
         ])->each(fn (array $section) => LandingSection::query()->updateOrCreate(
             ['key' => $section['key']],
@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
         Post::query()->firstOrCreate(
             ['slug' => 'membangun-transformasi-digital-yang-berkelanjutan'],
             [
-                'title' => 'Membangun Transformasi Digital yang Berkelanjutan',
-                'excerpt' => 'Pendekatan praktis untuk menyelaraskan teknologi, talenta, dan proses bisnis.',
-                'content' => '<p>Transformasi digital yang berhasil dimulai dari masalah bisnis yang jelas, bukan dari teknologi semata.</p><p>ProSigmaka membantu organisasi merancang roadmap, menyiapkan talenta, dan mengimplementasikan solusi teknologi yang terukur.</p>',
+                'title' => 'Building Sustainable Digital Transformation',
+                'excerpt' => 'A practical approach to aligning technology, talent, and business processes.',
+                'content' => '<p>Successful digital transformation starts with a clearly defined business problem, not with technology alone.</p><p>ProSigmaka helps organizations design roadmaps, prepare talent, and implement measurable technology solutions.</p>',
                 'status' => Post::STATUS_PUBLISHED,
                 'published_at' => now(),
             ],
