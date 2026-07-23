@@ -24,3 +24,5 @@
 /.phpunit.result.cache
 npm-debug.log
 yarn-error.log
+/database/database.sqlite
+/database/database.sqlite3
