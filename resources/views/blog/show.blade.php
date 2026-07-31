@@ -1,13 +1,4 @@
-<x-layouts.landing
-    :canonical="$seo['canonical']"
-    :description="$seo['description']"
-    :image="$seo['image']"
-    :modified-time="$seo['modifiedTime']"
-    :published-time="$seo['publishedTime']"
-    :structured-data="$seo['structuredData']"
-    :title="$seo['title']"
-    :type="$seo['type']"
->
+<x-layouts.landing :title="$post->title.' - ProSigmaka'">
     <x-site-navigation :sections="$sections" />
 
     <main id="main-content" class="blog-page">
