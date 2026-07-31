@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LandingSection;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 
@@ -18,7 +17,6 @@ class BlogController
 
         return view('blog.show', [
             'post' => $post,
-            'sections' => LandingSection::query()->active()->ordered()->get(),
         ]);
     }
 }

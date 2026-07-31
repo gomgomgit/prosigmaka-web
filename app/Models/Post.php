@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     public const STATUS_DRAFT = 'draft';
-
     public const STATUS_PUBLISHED = 'published';
 
     protected $fillable = [
