@@ -34,7 +34,7 @@
                 @endif
 
                 <div class="px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
-                    <div class="blog-content prose prose-invert prose-cyan max-w-none">
+                    <div class="blog-content prose prose-invert prose-cyan max-w-none prose-headings:font-black prose-headings:tracking-tight prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-p:text-slate-200 prose-a:text-cyan-300 prose-a:decoration-cyan-400/40 prose-a:underline-offset-4 hover:prose-a:text-cyan-200 prose-strong:text-white prose-li:text-slate-200 prose-blockquote:border-cyan-400/50 prose-blockquote:bg-white/4 prose-blockquote:text-slate-100 prose-blockquote:not-italic prose-code:text-cyan-200 prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-white/10 prose-pre:bg-slate-950 prose-pre:text-slate-100 prose-hr:border-white/10 prose-th:text-white prose-td:text-slate-300">
                         {!! $post->content !!}
                     </div>
                 </div>
