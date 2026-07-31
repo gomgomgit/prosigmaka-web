@@ -35,9 +35,8 @@
 </head>
 <script>
     (function () {
-        const storedTheme = localStorage.getItem('prosigmaka-theme');
-        const theme = storedTheme === 'light' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.theme = 'dark';
+        localStorage.removeItem('prosigmaka-theme');
     })();
 </script>
 <body class="font-inter bg-dark-bg text-white">
@@ -3204,8 +3203,6 @@
                 window.prosigmakaVantaEffect = null;
             }
 
-            const isLightTheme = document.documentElement.dataset.theme === 'light';
-
             window.prosigmakaVantaEffect = VANTA.NET({
                 el: "#vanta-bg",
                 mouseControls: true,
@@ -3215,11 +3212,11 @@
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: isLightTheme ? 0x006FC9 : 0x234E93,
-                backgroundColor: isLightTheme ? 0xE4EDF6 : 0x000000,
-                backgroundAlpha: isLightTheme ? 0.00 : 0.30,
-                points: isLightTheme ? 9.00 : 8.00,
-                maxDistance: isLightTheme ? 28.00 : 25.00,
+                color: 0x234E93,
+                backgroundColor: 0x000000,
+                backgroundAlpha: 0.30,
+                points: 8.00,
+                maxDistance: 25.00,
                 spacing: 18.00
             });
         }
@@ -4970,32 +4967,6 @@
 
     <!-- Carousel Navigation Scripts -->
     <script>
-        (function () {
-            function applyTheme(theme) {
-                const normalizedTheme = theme === 'light' ? 'light' : 'dark';
-                document.documentElement.dataset.theme = normalizedTheme;
-                localStorage.setItem('prosigmaka-theme', normalizedTheme);
-                document.querySelectorAll('.theme-toggle-btn').forEach((button) => {
-                    button.setAttribute('aria-pressed', normalizedTheme === 'light' ? 'true' : 'false');
-                    button.setAttribute('title', normalizedTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-                });
-
-                if (window.refreshProSigmakaVanta) {
-                    window.refreshProSigmakaVanta();
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', function () {
-                applyTheme(localStorage.getItem('prosigmaka-theme') || 'dark');
-                document.querySelectorAll('.theme-toggle-btn').forEach((button) => {
-                    button.addEventListener('click', function () {
-                        const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-                        applyTheme(nextTheme);
-                    });
-                });
-            });
-        })();
-
         document.addEventListener('DOMContentLoaded', function() {
             // Success Stories Carousel Navigation
             const successStoriesTrack = document.querySelector('.success-stories-track');

@@ -43,35 +43,8 @@
                                     src="{{ asset('assets/prosigmaka/logo-prosigmaka.png') }}" alt="Prosigmaka Logo" />
                             </div>
 
-                            <div class="hidden md:flex items-center">
-                                <button type="button" class="theme-toggle-btn group relative h-10 w-10 rounded-full border border-cyan-400/30 bg-gray-900/60 text-cyan-200 shadow-lg shadow-cyan-500/10 transition-all duration-300 hover:scale-110 hover:border-orange-400/60 hover:text-white" aria-label="Toggle light and dark theme" title="Toggle theme">
-                                    <span class="theme-icon theme-icon-dark absolute inset-0 flex items-center justify-center transition-all duration-300">
-                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.02 6.36-.7-.7M6.34 6.34l-.7-.7m12.72 0-.7.7M6.34 17.66l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
-                                        </svg>
-                                    </span>
-                                    <span class="theme-icon theme-icon-light absolute inset-0 flex items-center justify-center transition-all duration-300">
-                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-
                             <!-- Mobile Menu Button -->
-                            <div class="md:hidden flex items-center gap-3">
-                                <button type="button" class="theme-toggle-btn group relative h-10 w-10 rounded-full border border-cyan-400/30 bg-gray-900/60 text-cyan-200 shadow-lg shadow-cyan-500/10 transition-all duration-300 hover:border-orange-400/60 hover:text-white" aria-label="Toggle light and dark theme" title="Toggle theme">
-                                    <span class="theme-icon theme-icon-dark absolute inset-0 flex items-center justify-center transition-all duration-300">
-                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.02 6.36-.7-.7M6.34 6.34l-.7-.7m12.72 0-.7.7M6.34 17.66l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
-                                        </svg>
-                                    </span>
-                                    <span class="theme-icon theme-icon-light absolute inset-0 flex items-center justify-center transition-all duration-300">
-                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                                        </svg>
-                                    </span>
-                                </button>
+                            <div class="md:hidden flex items-center">
                                 <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none focus:text-white transition-colors duration-300" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
